@@ -32,7 +32,7 @@ def download_json(compound_id):
 def main():
     """Loop through compound IDs, retrying after failures."""
     start_cid = 60001
-    end_cid = 60005  # Reduced for testing; increase as needed
+    end_cid = 100001  # Reduced for testing; increase as needed
 
     while start_cid < end_cid:
         success = download_json(start_cid)
