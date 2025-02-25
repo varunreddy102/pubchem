@@ -24,10 +24,9 @@ jobs:
       - name: Run Scraper
         run: python scraper.py  # Make sure your script saves JSON files in "data/"
 
-      - name: Commit and Push JSON Files
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions@github.com"
-          git add data/*.json  # Only add new JSON files
-          git commit -m "Added new PubChem JSON data" || echo "No changes to commit"
-          git push
+      - name: Upload JSON Files as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: pubchem-json-files
+          path: data/
+          retention-days: 7  # Keep files for 7 days
